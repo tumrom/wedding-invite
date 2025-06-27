@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>Invito Matrimonio Digitale</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+    }
+    #container {
+      position: relative;
+      width: 80vw;
+      max-width: 600px;
+    }
+    img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+      transition: filter 1s ease, opacity 1s ease;
+      position: absolute;
+      top: 0; left: 0;
+    }
+    #inviteImg {
+      opacity: 0;
+      pointer-events: none;
+    }
+    /* blur effect on first image */
+    .blurred {
+      filter: blur(20px);
+      opacity: 0.3;
+    }
+    .visible {
+      opacity: 1 !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- Prima immagine (Lettera) -->
+    <!-- Esporta Lettera.pdf come image "lettera.png" -->
+    <img id="letterImg" src="lettera.png" alt="Lettera d'invito">
+    <!-- Seconda immagine (Invito) -->
+    <!-- Esporta Invito Official.pdf come image "invito.png" -->
+    <img id="inviteImg" src="invito.png" alt="Dettagli Invito">
+  </div>
+
+  <script>
+    const letter = document.getElementById('letterImg');
+    const invite = document.getElementById('inviteImg');
+
+    letter.addEventListener('click', () => {
+      // Applica blur e fade
+      letter.classList.add('blurred');
+      // Dopo 1s mostra l'invito
+      setTimeout(() => {
+        invite.classList.add('visible');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
